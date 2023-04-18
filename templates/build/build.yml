@@ -4,9 +4,13 @@ jobs:
     name: $(agent-pool-name)
 
   steps:
-    - ${{ each user in parameters.users }}:
-      - ${{ if eq(user.name, '') }}:
-        - script: echo 'User ${{ user }} has no email.'
-      - ${{ if ne(user.name, '') }}:
-        - script: echo 'User ${{ user.name }} with email ${{ user.email }}.'
+  - task: AzureCLI@2
+    displayName: Test AKS resources existence
+    inputs:
+      azureSubscription: '$(azure-subscription)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+          echo "Got it"
+        
           
