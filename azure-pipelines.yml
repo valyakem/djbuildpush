@@ -15,10 +15,10 @@ parameters:
     dev
   values:
     - dev
-- sqlservername: ''
-- sqlelasticpoolname: ''
-- firms : ['nbtenant1', 'nbtenant2', 'nbtenant3'] #defining array here to expect multiple values. 
-- resourcegroupname: ''
+  sqlservername: ''
+  sqlelasticpoolname: ''
+  firms : ['nbtenant1', 'nbtenant2', 'nbtenant3'] #defining array here to expect multiple values. 
+  resourcegroupname: ''
 
 stages:
 - stage: Build_Images
