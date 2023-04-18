@@ -1,0 +1,13 @@
+jobs:
+- job: Test_Kubernetes_Command
+  pool:
+    name: $(agent-pool-name)
+
+  steps:
+#Create the deployment and get credentials to variables
+  - task: Bash@3
+    displayName: Install jq 
+    inputs:
+      targetType: 'inline'
+      script: |
+        sudo apt update && sudo apt install jq -y

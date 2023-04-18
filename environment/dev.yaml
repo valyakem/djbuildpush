@@ -1,8 +1,9 @@
 variables:
   ### DEV ENVIRONMENT RELATED VARIABLES ###
   az-subscription-id: '612497ee-3913-4876-8bbd-25ad368306aa'
-  devopscon-name: 'azureconnection'
+  azure-subscription: 'azureconnection'
   devops-conn-spid: 'b4c4b611-edd5-4c23-b6b1-32778a6f3513'
+  agent-pool-name: 'nbakspools'
   # dns-azure-subscription: 'GSX Dev/Test'
   # mtlo-azure-subscription: 'Vantage-SharedResources'
   # agent-pool-name: 'Hosted-Agents-Dev'

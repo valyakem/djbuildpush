@@ -1,8 +1,14 @@
-trigger:
-- none
+trigger: none
+pr: none
+
+variables:
+  namespaceName: 'nginx-ingress'
+  imageName: 'pipelinetried'
+  DOCKER_BUILDKIT: 1
+  template: environment/dev.yaml
 
 pool:
-  name: 'nbakspools' 
+  name: $(agent-pool-name)
 
 parameters:
 - name: environment
@@ -13,23 +19,11 @@ parameters:
   values:
     - dev
 
-variables:
-  namespaceName: 'nginx-ingress'
-  imageName: 'pipelinetried'
-  DOCKER_BUILDKIT: 1
-  template: environment/dev.yaml
-
 stages:
-- stage: secure_buildstage
+- stage: Build_Images
   pool:
-    name: 'nbakspools'
+    name: $(agent-pool-name)
   jobs:
-  - job: secure_buildjob
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-      repository: $(imageName)
-      command: build
-      Dockerfile: app/Dockerfile
+    - template: templates/build/build.yml
+
     
