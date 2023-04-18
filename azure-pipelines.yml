@@ -1,19 +1,29 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - None
 
 pool:
-  name: nbakspools
+  name: 'nbakspools' 
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+parameters:
+- name: environment
+  displayName: Environment
+  type: string
+  default:
+    dev
+  values:
+    - dev
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+variables:
+- template: variables/env/${{ parameters.environment }}.yaml
+
+stages:
+- stage: secure_buildstage
+  pool:
+    name: 'nbakspools'
+  jobs:
+  - job: secure_buildjob
+    steps:
+    - script: echo This happens before code 
+      displayName: 'Base: Pre-build'
+    - script: kubectl get namespaces
+      displayName: 'Base: Build'
