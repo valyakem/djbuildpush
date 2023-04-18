@@ -3,16 +3,20 @@ jobs:
   pool:
     name: $(agent-pool-name)
 
-# #Create the deployment and get credentials to variables
-#   - task: Bash@3
-#     displayName: Install jq 
-#     inputs:
-#       targetType: 'inline'
-#       script: |
-#         sudo apt update && sudo apt install jq -y
+  parameters:
+  - name: users
+    type: object
+    default:
+      - name: 'john'
+        email: 'john@doe.com'
+      - name: 'jane'
+        email: 'jane@doe.com'
+      - bob
 
   steps:
-  - ${{ each fruit in parameters.listOfFruits }} :
-    - ${{ each fruitColor in fruit.colors}} :
-      - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
+    - ${{ each user in parameters.users }}:
+      - ${{ if eq(user.name, '') }}:
+        - script: echo 'User ${{ user }} has no email.'
+      - ${{ if ne(user.name, '') }}:
+        - script: echo 'User ${{ user.name }} with email ${{ user.email }}.'
           
