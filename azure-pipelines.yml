@@ -32,19 +32,4 @@ stages:
       repository: $(imageName)
       command: build
       Dockerfile: app/Dockerfile
-
-    - task: AzureCLI@2
-      displayName: Get Namespace Exist
-      inputs:
-      azureSubscription: '$(az-subscription-id)'
-      scriptType: bash
-      scriptLocation: inlineScript
-      inlineScript: |
-          namespace=$(kubectl get namespaces | grep $(namespaceName))
-          if [[ ! -z "$namespace" ]]; 
-          then
-            echo "Namespace exist"
-          else 
-            echo "Namespace Does Not Exists"
-          fi
     
