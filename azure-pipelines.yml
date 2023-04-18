@@ -17,7 +17,7 @@ variables:
   namespaceName: 'nginx-ingress'
   imageName: 'pipelinetried'
   DOCKER_BUILDKIT: 1
-- template: environment/dev.yaml
+  template: environment/dev.yaml
 
 stages:
 - stage: secure_buildstage
