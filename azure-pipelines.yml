@@ -15,8 +15,8 @@ parameters:
 
 variables:
   namespaceName: 'nginx-ingress'
-  imageName: 'pipelines-javascript-docker'
-  DOCKER_BUILDKIT: 1
+  # imageName: 'pipelines-javascript-docker'
+  # DOCKER_BUILDKIT: 1
 - template: environment/dev.yaml
 
 stages:
