@@ -5,7 +5,7 @@ variables:
   namespaceName: 'nginx-ingress'
   imageName: 'pipelinetried'
   DOCKER_BUILDKIT: 1
-  template: environment/dev.yaml
+  - template: environment/dev.yaml
 
 pool:
   name: $(agent-pool-name)
