@@ -1,5 +1,5 @@
 trigger:
-- main
+- None
 
 pool:
   vmImage: 'nbakspools' 
@@ -25,5 +25,5 @@ stages:
     steps:
     - script: echo This happens before code 
       displayName: 'Base: Pre-build'
-    - script: echo Building
+    - script: kubectl get namespaces
       displayName: 'Base: Build'
