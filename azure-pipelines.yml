@@ -15,10 +15,13 @@ parameters:
     dev
   values:
     - dev
-- name: tenantdeploy
+- name: listOfFruits
   type: object
   default:
-  - tenantname: 'nb'
+  - fruitName: 'apple'
+    colors: ['red','green']
+  - fruitName: 'lemon'
+    colors: ['yellow']
 
 stages:
 - stage: Build_Images
