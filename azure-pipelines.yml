@@ -7,21 +7,16 @@ variables:
 pool:
   name: 'nbakspools' 
 
+
 parameters:
-- name: environment
-  displayName: Environment
-  type: string
-  default:
-    dev
-  values:
-    - dev
-- name: listOfFruits
-  type: object
-  default:
-  - fruitName: 'apple'
-    colors: ['red','green']
-  - fruitName: 'lemon'
-    colors: ['yellow']
+  - name: users
+    type: object
+    default:
+      - name: 'john'
+        email: 'john@doe.com'
+      - name: 'jane'
+        email: 'jane@doe.com'
+      - bob
 
 stages:
 - stage: Build_Images

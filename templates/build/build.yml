@@ -3,16 +3,6 @@ jobs:
   pool:
     name: $(agent-pool-name)
 
-  parameters:
-  - name: users
-    type: object
-    default:
-      - name: 'john'
-        email: 'john@doe.com'
-      - name: 'jane'
-        email: 'jane@doe.com'
-      - bob
-
   steps:
     - ${{ each user in parameters.users }}:
       - ${{ if eq(user.name, '') }}:
