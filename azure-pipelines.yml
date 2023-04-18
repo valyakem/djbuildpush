@@ -14,8 +14,8 @@ parameters:
     - dev
 
 variables:
+  namespaceName: 'nginx-ingress'
   imageName: 'pipelines-javascript-docker'
-  namespace: 'nginx-ingress'
   DOCKER_BUILDKIT: 1
 - template: environment/dev.yaml
 
