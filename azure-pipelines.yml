@@ -3,8 +3,7 @@ pr: none
 
 variables:
 - template: environment/dev.yaml
-  namespaceName: 'nginx-ingress'
-  DOCKER_BUILDKIT: 1
+  envName: 'dev'
   
 pool:
   name: 'nbakspools' 
@@ -16,7 +15,7 @@ parameters:
   default:
     dev
   values:
-    - dev
+    - $(envName)
 
 stages:
 - stage: Build_Images
