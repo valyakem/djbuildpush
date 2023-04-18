@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'nbakspools' 
+
+parameters:
+- name: environment
+  displayName: Environment
+  type: string
+  default:
+    dev
+  values:
+    - dev
+
+variables:
+- template: variables/env/${{ parameters.environment }}.yaml
+
+stages:
+- stage: secure_buildstage
+  pool:
+    name: 'nbakspools'
+  jobs:
+  - job: secure_buildjob
+    steps:
+    - script: echo This happens before code 
+      displayName: 'Base: Pre-build'
+    - script: echo Building
+      displayName: 'Base: Build'
