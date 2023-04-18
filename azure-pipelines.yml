@@ -14,7 +14,7 @@ parameters:
     - dev
 
 variables:
-- template: env/dev.yaml
+- template: dev.yaml
 
 stages:
 - stage: secure_buildstage
