@@ -11,3 +11,17 @@ jobs:
       targetType: 'inline'
       script: |
         sudo apt update && sudo apt install jq -y
+
+  - ${{ each firm in parameters.firms }}:
+    - task: AzureCLI@2
+      displayName: 'Azure CLI to create the SQL Server database inside an elastic pool'
+      inputs:
+        azureSubscription: 'azure-service-connection'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          dbprefix="db-"
+          firmname=${{ firm }} 
+          sqldbName=$dbprefix$firmname
+          echo $sqldbName
+          
