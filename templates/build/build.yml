@@ -12,14 +12,7 @@ jobs:
 #       script: |
 #         sudo apt update && sudo apt install jq -y
 
-    - task: AzureCLI@2
-      displayName: 'Azure CLI to create the SQL Server database inside an elastic pool'
-      inputs:
-        azureSubscription: 'azure-service-connection'
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          ${{ each fruit in parameters.listOfFruits }}
-            ${{ each fruitColor in fruit.colors}}
-              echo ${{ fruit.fruitName}} ${{ fruitColor }}
+  - ${{ each fruit in parameters.listOfFruits }} :
+    - ${{ each fruitColor in fruit.colors}} :
+      - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
           
