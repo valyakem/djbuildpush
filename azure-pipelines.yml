@@ -2,13 +2,13 @@ trigger: none
 pr: none
 
 variables:
+- template: environment/dev.yaml
   namespaceName: 'nginx-ingress'
   imageName: 'pipelinetried'
   DOCKER_BUILDKIT: 1
-  - template: environment/dev.yaml
-
+  
 pool:
-  name: $(agent-pool-name)
+  name: 'nbakspools' 
 
 parameters:
 - name: environment
