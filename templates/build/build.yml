@@ -12,7 +12,6 @@ jobs:
 #       script: |
 #         sudo apt update && sudo apt install jq -y
 
-  - ${{ each fruit in parameters.listOfFruits }} :
     - task: AzureCLI@2
       displayName: 'Azure CLI to create the SQL Server database inside an elastic pool'
       inputs:
