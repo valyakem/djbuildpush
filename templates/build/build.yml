@@ -7,7 +7,7 @@ jobs:
 # #Create the deployment and get credentials to variables
   # - ${{ each fruit in parameters.listOfFruits }} :
   #   - ${{ each fruitColor in fruit.colors}} :
-      - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
+      # - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
 #   - task: Bash@3
 #     displayName: Install jq 
 #     inputs:
@@ -16,13 +16,12 @@ jobs:
 #         sudo apt update && sudo apt install jq -y
 
   - ${{ each fruit in parameters.listOfFruits }} :
-    - task: AzureCLI@2
-      displayName: 'Azure CLI to create the SQL Server database inside an elastic pool'
-      inputs:
-        azureSubscription: 'azure-service-connection'
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          ${{ each fruitColor in fruit.colors}} 
+    - ${{ each fruitColor in fruit.colors}}:
+        displayName: 'Azure CLI to create the SQL Server database inside an elastic pool'
+        inputs:
+          azureSubscription: 'azure-service-connection'
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: |
             echo ${{ fruit.fruitName}} ${{ fruitColor }}
           
