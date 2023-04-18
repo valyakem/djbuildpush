@@ -15,8 +15,8 @@ parameters:
 
 variables:
   namespaceName: 'nginx-ingress'
-  # imageName: 'pipelines-javascript-docker'
-  # DOCKER_BUILDKIT: 1
+  imageName: 'pipelinetried'
+  DOCKER_BUILDKIT: 1
 - template: environment/dev.yaml
 
 stages:
@@ -26,6 +26,13 @@ stages:
   jobs:
   - job: secure_buildjob
     steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+      repository: $(imageName)
+      command: build
+      Dockerfile: app/Dockerfile
+
     - task: AzureCLI@2
       displayName: Get Namespace Exist
       inputs:
