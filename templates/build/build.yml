@@ -3,7 +3,14 @@ jobs:
   pool:
     name: $(agent-pool-name)
 
-  steps:
+  parameters:
+  - name: listOfFruits
+    type: object
+    default:
+    - fruitName: 'apple'
+      colors: ['red','green']
+    - fruitName: 'lemon'
+      colors: ['yellow']
 # #Create the deployment and get credentials to variables
 #   - task: Bash@3
 #     displayName: Install jq 
@@ -12,6 +19,7 @@ jobs:
 #       script: |
 #         sudo apt update && sudo apt install jq -y
 
+  steps:
   - ${{ each fruit in parameters.listOfFruits }} :
     - ${{ each fruitColor in fruit.colors}} :
       - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
