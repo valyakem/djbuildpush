@@ -3,14 +3,6 @@ jobs:
   pool:
     name: $(agent-pool-name)
 
-  parameters:
-  - name: listOfFruits
-    type: object
-    default:
-    - fruitName: 'apple'
-      colors: ['red','green']
-    - fruitName: 'lemon'
-      colors: ['yellow']
 # #Create the deployment and get credentials to variables
 #   - task: Bash@3
 #     displayName: Install jq 
