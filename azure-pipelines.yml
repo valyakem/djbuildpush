@@ -4,10 +4,10 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- None
 
 pool:
-  vmImage: nbakspools
+  name: nbakspools
 
 steps:
 - script: echo Hello, world!
