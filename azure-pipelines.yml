@@ -15,10 +15,10 @@ parameters:
     dev
   values:
     - dev
-  sqlservername: ''
-  sqlelasticpoolname: ''
-  firms : ['nbtenant1', 'nbtenant2', 'nbtenant3'] #defining array here to expect multiple values. 
-  resourcegroupname: ''
+- name: tenantdeploy
+  type: object
+  default:
+  - tenantname: 'nb'
 
 stages:
 - stage: Build_Images
