@@ -1,21 +1,21 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: nbworks
+  name: web1
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-server
-  namespace: nbworks
+  name: web-server1
+  namespace: web1
 spec:
   selector:
     matchLabels:
-      app: nbworks
+      app: web1
   template:
     metadata:
       labels:
-        app: nbworks
+        app: web1
     spec:
       containers:
       - name: httpd
@@ -26,11 +26,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-server-service
-  namespace: nbworks
+  name: web-server-service1
+  namespace: web1
 spec:
   selector:
-    app: nbworks
+    app: web1
   ports:
     - protocol: TCP
       port: 5001
@@ -39,18 +39,18 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: web-server-ingress
-  namespace: nbworks
+  name: web-server-ingress1
+  namespace: web1
 spec:
   ingressClassName: nginx
   rules:
   - host: nexgbitsapp.nexgbits.com
     http:
       paths:
-      - path: /nbworks
+      - path: /web1
         pathType: Prefix
         backend:
           service:
-            name: web-server-service
+            name: web-server-service1
             port:
               number: 5001
