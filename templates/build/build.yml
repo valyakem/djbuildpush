@@ -25,5 +25,5 @@ jobs:
         sudo chmod a+x /usr/local/bin/yq
 
         sh templates/tenants/yqtest.sh
-
-        yq '.kind.Namespace.metadata.name = "ednamespace"' templates/tenants/deployments/nbsampleapp.yaml
+        Namespace=$getcustname
+        yq '.kind.metadata.name = "$Namespace"' templates/tenants/deployments/nbsampleapp.yaml
