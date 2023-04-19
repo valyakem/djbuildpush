@@ -27,5 +27,5 @@ for customer in $getcustomers
          echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
               $iqImageVersion  "|" $keycloakImageVersion "|" $npvImageVersion "|" \
               $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
-         export custNamespace=$getcustname
+         export custNamespace=$(echo $getcustname)
   done 
