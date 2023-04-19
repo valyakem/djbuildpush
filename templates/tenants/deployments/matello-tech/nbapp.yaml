@@ -11,11 +11,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nbworkapp
+      app: nbworks
   template:
     metadata:
       labels:
-        app: nbworkapp
+        app: nbworks
     spec:
       containers:
       - name: httpd
@@ -30,7 +30,7 @@ metadata:
   namespace: nbworks
 spec:
   selector:
-    app: nbworkapp
+    app: nbworks
   ports:
     - protocol: TCP
       port: 5001
