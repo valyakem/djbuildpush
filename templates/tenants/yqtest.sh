@@ -9,7 +9,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       export custenvironment=$environment
       export custtenant=$tenantname
       export custdeployment=$deploymentgroup
-      echo $custname
+      # echo $custname
       # yq '.metadata.name = $custname' templates/tenants/deployments/nbsampleapp.yaml > templates/tenants/deployments/test.yaml
       #=======
       #Get the deployment directory and list all directories within it. 
@@ -20,10 +20,10 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
           deploymentdir=$(echo "$dir" | cut -d'/' -f 4)
           echo $deploymentdir
  
-      #compare the directory to match the customer deployment entries before advancing with deployment.
-      #     if [ "$custname" == "$deploymentdir" ]; then
-      #       echo "$deploymentdir is identical to $custname"
-      #       echo "Deployment is $dirs/$deploymentdir"
-      #       fi
+      compare the directory to match the customer deployment entries before advancing with deployment.
+          if [ "$custname" == "$deploymentdir" ]; then
+            echo "$deploymentdir is identical to $custname"
+            echo "Deployment is $custname/$deploymentdir"
+            fi
       done
 done
