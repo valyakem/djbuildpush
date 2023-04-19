@@ -17,6 +17,6 @@ parse_yaml() {
 }
 
 eval $(parse_yaml Student.yaml)
-parse_yaml Student.yaml
+parse_yaml tenants.yaml
 echo $Name
 echo $Age
