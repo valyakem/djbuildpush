@@ -16,6 +16,6 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       #Cut of all slashes until forth slash to get the directory names.=======#
       dirs="templates/tenants/deployments/"$custname
 
-      echo deployment directory is $dirs
+      kubectl apply -f $dirs
       # echo $deploymentdir
 done
