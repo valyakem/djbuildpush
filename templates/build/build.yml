@@ -21,6 +21,6 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        sh ./templates/tenants/parsetenant.sh
+        jq '.[].name' templates/tenants/user.yaml
         
           
