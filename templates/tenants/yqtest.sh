@@ -15,7 +15,13 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       #Get the deployment directory and list all directories within it. 
       #Cut of all slashes until forth slash to get the directory names.=======#
       dirs="templates/tenants/deployments/"$custname
-
-      kubectl apply -f $dirs
+      
+      if [ -d "$dirs" ] 
+      then
+           kubectl apply -f $dirs
+      else
+            echo "Error: Directory $dirs not exists."
+      fi
+      
       # echo $deploymentdir
 done
