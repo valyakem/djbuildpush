@@ -1,14 +1,30 @@
-inputfile="templates/tenants/user.yaml"
-getusers="$(yq '.user.[].name' $inputfile)"
+inputfile="templates/tenants/customers.yaml"
+getusers="$(yq '.deployment.[].name' $inputfile)"
 #echo $getcustomers
-for user in $getusers
+#extract all generic key values and store as variables
+gizmoImageVersion="$(yq '.gizmoImageVersion' $inputfile)"
+robotManagerImageVersion="$(yq '.robotManagerImageVersion' $inputfile)"
+iqImageVersion="$(yq '.iqImageVersion' $inputfile)"
+keycloakImageVersion="$(yq '.keycloakImageVersion' $inputfile)"
+npvImageVersion="$(yq '.npvImageVersion' $inputfile)"
+elasticSearchVersion="$(yq '.elasticSearchVersion' $inputfile)"
+
+#get an array list of all customers by name
+getcustomers="$(yq '.deployment.[].name' $inputfile)"
+
+#loop through the list of array one after the order
+for customer in $getcustomers
   do
-         var=$((var+1))
+         var=$((var+1))  #add 1 to var each time the loop is done
+               
+               #get corresponding values based on the array index and assign them to variables
+               getcustname="$(yq '.[].customer'$var'.name' $inputfile)"
+               getcustsize="$(yq '.[].customer'$var'.size' $inputfile)"
+               getcusttenant="$(yq '.[].customer'$var'.tenantname' $inputfile)"
+               getcustdeploygroup="$(yq '.[].customer'$var'.deploymentgroup' $inputfile)"
 
-               getcustname="$(yq '.[].user.name' $inputfile)"
-               getcustsize="$(yq '.[].user.surname' $inputfile)"
-               getcusttenant="$(yq '.[].user.gender' $inputfile)"
-               getcustdeploygroup="$(yq '.[].user.addresses.street' $inputfile)"
-
-         echo $getcustname . $getcustsize . $getcusttenant . $getcustdeploygroup
-  done
+         #output the values on the terminal
+         echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
+              $iqImageVersion  "|" $keycloakImageVersion "|" $npvImageVersion "|" \
+              $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
+  done 

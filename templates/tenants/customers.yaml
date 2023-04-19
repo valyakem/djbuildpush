@@ -1,0 +1,28 @@
+gizmoImageVersion: ""
+robotManagerImageVersion: '10.23.344'
+iqImageVersion: ""
+keycloakImageVersion: "11.09.123"
+npvImageVersion: ""
+elasticSearchVersion: "2.0.1"
+
+deployment:
+  customer1: 
+    name: "Martello_Technologies"
+    size: "large"
+    environment: "prod-west-us"
+    tenantname: "vdxdemo"
+    deploymentgroup: "amer/apac"
+
+  customer2:
+    name: "prod_east_aus"
+    size: "small"
+    environment: "prod-east-aus"
+    tenantname: "vdxdemo"
+    deploymentgroup: "amer/apac"
+
+  customer3:
+    name: "CaCentral"
+    size: "Medium"
+    environment: "prod-central-ca"
+    tenantname: "vdxdemo"
+    deploymentgroup: "amer"
