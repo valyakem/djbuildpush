@@ -27,9 +27,8 @@ for customer in $getcustomers
               echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
               $iqImageVersion  "|" $keycloakImageVersion "|" $npvImageVersion "|" \
               $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
-              export custNameSpace=$getcustname
             #   replacestring='name: $getcustname'
             # yq -i '.metadata.name |= $getcustname' templates/tenants/deployments/nbsampleapp.yaml
             # yq -r .test.database templates/tenants/deployments/nbsampleapp.yaml
-            yq '.metadata.name = "barslels"' templates/tenants/deployments/nbsampleapp.yaml
+            yq '.metadata.name = "$getcustname"' templates/tenants/deployments/nbsampleapp.yaml
   done 
