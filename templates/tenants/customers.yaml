@@ -1,28 +1,36 @@
-gizmoImageVersion: ""
-robotManagerImageVersion: '10.23.344'
-iqImageVersion: ""
-keycloakImageVersion: "11.09.123"
-npvImageVersion: ""
-elasticSearchVersion: "2.0.1"
+# identitymappings:
+# - arn: "arn:aws:iam::12345567:role/AdmRole"
+#   group: "system:masters"
+#   user: "user1"
+# - arn: "arn:aws:iam::12345567:role/TestRole"
+#   group: "system:masters"
+#   user: "user2"
 
-deployment:
-  customer1: 
-    name: "matello-tech"
-    size: "large"
-    environment: "prod-west-us"
-    tenantname: "vdxdemo"
-    deploymentgroup: "amer/apac"
+# gizmoImageVersion: ""
+# robotManagerImageVersion: '10.23.344'
+# iqImageVersion: ""
+# keycloakImageVersion: "11.09.123"
+# npvImageVersion: ""
+# elasticSearchVersion: "2.0.1"
 
-  customer2:
-    name: "winma-lto"
-    size: "small"
-    environment: "prod-east-aus"
-    tenantname: "vdxdemo"
-    deploymentgroup: "amer/apac"
+deployments:
+- customer: 
+  name: "matello-tech"
+  size: "large"
+  environment: "prod-west-us"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer/apac"
 
-  customer3:
-    name: "capitos"
-    size: "Medium"
-    environment: "prod-central-ca"
-    tenantname: "vdxdemo"
-    deploymentgroup: "amer"
+- customer:
+  name: "winma-lto"
+  size: "small"
+  environment: "prod-east-aus"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer/apac"
+
+- customer:
+  name: "capitos"
+  size: "Medium"
+  environment: "prod-central-ca"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer"
