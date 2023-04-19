@@ -21,6 +21,8 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        jq '.[].name' templates/tenants/user.yaml
-        
+        add-apt-repository ppa:rmescandon/yq
+        sudo apt-get install yq
+
+        yq '.[].name' templates/tenants/user.yaml
           
