@@ -14,7 +14,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       #=======
       #Get the deployment directory and list all directories within it. 
       #Cut of all slashes until forth slash to get the directory names.=======#
-      dirs="templates/tenants/deployments/" + $custname
+      dirs="templates/tenants/deployments/"$custname
 
       echo deployment directory is $dir
       # echo $deploymentdir
