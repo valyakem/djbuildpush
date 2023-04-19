@@ -29,6 +29,6 @@ for customer in $getcustomers
               $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
               searchstring='name: web'
               replacestring='name: $getcustname'
-            yq -yi '.metadata.name |= $getcustname' templates/tenants/deployments/nbsampleapp.yaml
+            yq -i '.metadata.name |= $getcustname' templates/tenants/deployments/nbsampleapp.yaml
             # yq '.metadata.name = $getcustname' templates/tenants/deployments/nbsampleapp.yaml
   done 
