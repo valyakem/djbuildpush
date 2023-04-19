@@ -10,3 +10,14 @@ user:
     - street: "Ludwigstrasse"
       city: Munich
       country: Germany
+  name: paul
+  surname: Ayuk
+  gender: female
+  active: false
+  addresses:
+    - street: "372 "
+      city: London
+      country: England
+    - street: "Ludwigstrasse"
+      city: London
+      country: Canada
