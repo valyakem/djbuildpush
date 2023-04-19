@@ -24,11 +24,11 @@ for customer in $getcustomers
                getcustdeploygroup="$(yq '.[].customer'$var'.deploymentgroup' $inputfile)"
 
          #output the values on the terminal
-         echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
+              echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
               $iqImageVersion  "|" $keycloakImageVersion "|" $npvImageVersion "|" \
               $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
-            #   searchstring='name: web'
+              export custNameSpace=$getcustname
             #   replacestring='name: $getcustname'
             # yq -i '.metadata.name |= $getcustname' templates/tenants/deployments/nbsampleapp.yaml
-            yq '.metadata.name = $getcustname' templates/tenants/deployments/nbsampleapp.yaml
+            yq '.metadata.name = $custNameSpace' templates/tenants/deployments/nbsampleapp.yaml
   done 
