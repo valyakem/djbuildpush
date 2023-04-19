@@ -21,9 +21,8 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
           echo $deploymentdir
  
       #compare the directory to match the customer deployment entries before advancing with deployment.
-          if [ "$name" == "$deploymentdir" ]; then
-            echo "$deploymentdir is identical to $name"
-            echo "Deployment is $name/$deploymentdir"
-            fi
+      #     if [ "$name" == "$deploymentdir" ]; then
+      #       echo "Deployment is $name/$deploymentdir"
+      #       fi
       done
 done
