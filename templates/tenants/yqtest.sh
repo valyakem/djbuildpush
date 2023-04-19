@@ -10,5 +10,5 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       export custtenant=$tenantname
       export custdeployment=$deploymentgroup
       echo $custname
-      yq '.metadata.name = $custname' templates/tenants/deployments/nbsampleapp.yaml
+      yq '.metadata.name = $custname' templates/tenants/deployments/nbsampleapp.yaml > templates/tenants/deployments/test.yaml
 done
