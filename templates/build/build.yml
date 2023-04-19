@@ -25,5 +25,3 @@ jobs:
         sudo chmod a+x /usr/local/bin/yq
 
         sh templates/tenants/yqtest.sh
-
-        yq '.metadata.name = $custNamespace' templates/tenants/deployments/nbsampleapp.yaml
