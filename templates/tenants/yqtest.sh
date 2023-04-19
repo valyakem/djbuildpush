@@ -19,14 +19,15 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
         do  
           deploymentdir=$(echo "$dir" | cut -d'/' -f 4)
           
+          echo $deploymentdir  "==" $custname
  
       #compare the directory to match the customer deployment entries before advancing with deployment.
-            if [ "$deploymentdir" == "$name" ]
-              then
-                echo "Equal Strings"
-              else
-                echo "Strings not equal"
-              fi
+            # if [ "$deploymentdir" == "$name" ]
+            #   then
+            #     echo "Equal Strings"
+            #   else
+            #     echo "Strings not equal"
+            #   fi
       done
       # echo $deploymentdir
 done
