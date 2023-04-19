@@ -27,8 +27,9 @@ for customer in $getcustomers
               echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
               $iqImageVersion  "|" $keycloakImageVersion "|" $npvImageVersion "|" \
               $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
+              echo "##vso[task.setvariable variable=custNamespace;]$getcustname"
             #   replacestring='name: $getcustname'
             # yq -i '.metadata.name |= $getcustname' templates/tenants/deployments/nbsampleapp.yaml
             # yq -r .test.database templates/tenants/deployments/nbsampleapp.yaml
-            yq '.metadata.name = $getcustname' templates/tenants/deployments/nbsampleapp.yaml
+            yq '.metadata.name = $custNamespace' templates/tenants/deployments/nbsampleapp.yaml
   done 
