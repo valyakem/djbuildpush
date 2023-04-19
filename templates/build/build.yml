@@ -26,4 +26,4 @@ jobs:
 
         sh templates/tenants/yqtest.sh
 
-        yq e -i '.Namespace.metadata.name = "ednamespace"' templates/tenants/deployments/nbsampleapp.yaml
+        yq '.Namespace.metadata.name = "ednamespace"' templates/tenants/deployments/nbsampleapp.yaml
