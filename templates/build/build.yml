@@ -12,5 +12,15 @@ jobs:
       scriptLocation: 'inlineScript'
       inlineScript: |
           echo "Got it"
+
+   #creation of client's secret in kubernetes
+  - task: AzureCLI@2
+    displayName: Test AKS resources existence
+    inputs:
+      azureSubscription: '$(azure-subscription)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        sh ./templates/tenants/parsetenant.sh
         
           

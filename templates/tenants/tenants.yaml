@@ -1,0 +1,13 @@
+Student:
+  Name: 'Alice'
+  Degree:
+    IT:
+      subject1: 'Computer graphics'
+      subject2: 'Calculus'
+      subject3: 'Networking'
+    Details:
+      Address: 'Street# 5/1 Block B New York City'
+      Status: 'Enrolled'
+  Phone:
+    Landline_number: '9999999'
+    Cellphone_number: '737438488'
