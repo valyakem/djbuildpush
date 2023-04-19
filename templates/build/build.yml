@@ -26,4 +26,4 @@ jobs:
 
         sh templates/tenants/yqtest.sh
         Namespace=$getcustname
-        yq '.metadata.name = "$Namespace"' templates/tenants/deployments/nbsampleapp.yaml
+        yq '.metadata.name = $Namespace' templates/tenants/deployments/nbsampleapp.yaml
