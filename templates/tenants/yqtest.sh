@@ -27,5 +27,6 @@ for customer in $getcustomers
          echo $getcustname "|" $gizmoImageVersion "|" $robotManagerImageVersion "|" \
               $iqImageVersion  "|" $keycloakImageVersion "|" $npvImageVersion "|" \
               $elasticSearchVersion "|" $getcustsize "|" $getcusttenant "|" $getcustdeploygroup
-            yq '.metadata.name = $getcustname' templates/tenants/deployments/nbsampleapp.yaml
+
+            yq '.metadata.name = $getcustname' -i templates/tenants/deployments/nbsampleapp.yaml
   done 
