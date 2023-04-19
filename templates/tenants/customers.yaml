@@ -7,21 +7,21 @@ elasticSearchVersion: "2.0.1"
 
 deployment:
   customer1: 
-    name: "Martello_Technologies"
+    name: "matello-tech"
     size: "large"
     environment: "prod-west-us"
     tenantname: "vdxdemo"
     deploymentgroup: "amer/apac"
 
   customer2:
-    name: "prod_east_aus"
+    name: "winma-lto"
     size: "small"
     environment: "prod-east-aus"
     tenantname: "vdxdemo"
     deploymentgroup: "amer/apac"
 
   customer3:
-    name: "CaCentral"
+    name: "capitos"
     size: "Medium"
     environment: "prod-central-ca"
     tenantname: "vdxdemo"
