@@ -30,5 +30,5 @@ for customer in $getcustomers
               export custNameSpace=$getcustname
             #   replacestring='name: $getcustname'
             # yq -i '.metadata.name |= $getcustname' templates/tenants/deployments/nbsampleapp.yaml
-            yq '.metadata.name = $custNameSpace' templates/tenants/deployments/nbsampleapp.yaml
+            yq '.metadata.name = '$custNameSpace'' templates/tenants/deployments/nbsampleapp.yaml
   done 
