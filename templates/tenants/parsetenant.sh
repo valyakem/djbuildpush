@@ -16,7 +16,7 @@ parse_yaml() {
    }'
 }
 
-eval $(parse_yaml tenants.yaml)
-parse_yaml tenants.yaml
+eval $(parse_yaml templates/tenants/tenants.yaml)
+parse_yaml templates/tenants/tenants.yaml
 echo $Name
 echo $Age
