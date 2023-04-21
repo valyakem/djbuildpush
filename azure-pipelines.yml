@@ -11,6 +11,12 @@ pool:
 parameters:
 
 stages:
+- stage: Build_Images
+  pool:
+    name: $(agent-pool-name)
+  jobs:
+    - template: templates/build/build.yml
+
 - stage: Deploy_TO_Created_Namespace
   pool:
     name: $(agent-pool-name)
