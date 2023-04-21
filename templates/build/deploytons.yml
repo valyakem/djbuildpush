@@ -12,7 +12,7 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
+        kubectl apply -R -f templates/tenants/capitos/ -n usermanagement
 
 
 
