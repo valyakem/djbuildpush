@@ -33,6 +33,4 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        kubectl delete namespace usermanagement
-
-        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
+        kubectl apply namespace usermanagement
