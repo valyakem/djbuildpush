@@ -27,10 +27,3 @@ deployments:
   environment: "prod-east-aus"
   tenantname: "vdxdemo"
   deploymentgroup: "amer/apac"
-
-- customer:
-  name: "capitos"
-  size: "Medium"
-  environment: "prod-central-ca"
-  tenantname: "vdxdemo"
-  deploymentgroup: "amer"

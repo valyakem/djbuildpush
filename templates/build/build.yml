@@ -5,7 +5,7 @@ jobs:
 
   steps:
   - task: AzureCLI@2
-    displayName: Test AKS resources existence
+    displayName: Test_Script
     inputs:
       azureSubscription: '$(azure-subscription)'
       scriptType: 'bash'
@@ -15,7 +15,7 @@ jobs:
 
    #creation of client's secret in kubernetes
   - task: AzureCLI@2
-    displayName: Test AKS resources existence
+    displayName: Install_customers_kubernetes_files
     inputs:
       azureSubscription: '$(azure-subscription)'
       scriptType: 'bash'
@@ -25,3 +25,14 @@ jobs:
         sudo chmod a+x /usr/local/bin/yq
 
         sh templates/tenants/yqtest.sh
+
+  - task: AzureCLI@2
+    displayName: Deploy_Another_Namespace
+    inputs:
+      azureSubscription: '$(azure-subscription)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        kubectl create namespace usermanagement
+
+        kubectl apply -R -f templates/tenants/capitos/
