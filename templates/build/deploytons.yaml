@@ -1,0 +1,18 @@
+jobs:
+- job: Test_Kubernetes_Command
+  pool:
+    name: $(agent-pool-name)
+
+  steps:
+   #creation of client's secret in kubernetes
+  - task: AzureCLI@2
+    displayName: Install_customers_kubernetes_files
+    inputs:
+      azureSubscription: '$(azure-subscription)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
+
+
+

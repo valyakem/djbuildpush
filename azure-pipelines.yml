@@ -9,27 +9,13 @@ pool:
 
 
 parameters:
-  - name: users
-    type: object
-    default:
-      - name: 'john'
-        email: 'john@doe.com'
-      - name: 'jane'
-        email: 'jane@doe.com'
-      - bob
 
 stages:
-- stage: Build_Images
+- stage: Deploy_TO_Created_Namespace
   pool:
     name: $(agent-pool-name)
   jobs:
-    - template: templates/build/build.yml
-
-- stage: Deploy_Another_Namespace
-  pool:
-    name: $(agent-pool-name)
-  jobs:
-    - template: templates/build/build.yml
+    - template: templates/build/deploytons.yml
 
 
 
