@@ -7,9 +7,6 @@ variables:
 pool:
   name: 'nbakspools' 
 
-
-parameters:
-
 stages:
 - stage: Build_Images
   pool:
