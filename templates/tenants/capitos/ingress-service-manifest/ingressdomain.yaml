@@ -2,28 +2,37 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-app1-app2-app3
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
+  namespace: web
 spec:
+  ingressClassName: nginx
   rules:
-  - host: eapp1.kubeoncloud.com    
+  - host: nexgbitsapp1.nexgbits.com
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: app1-nginx-clusterip-service
-          servicePort: 80
-  - host: eapp2.kubeoncloud.com    
+          service:
+            name: app1-nginx-clusterip-service
+            port:
+              number: 80
+  - host: nexgbitsapp2.nexgbits.com
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: app2-nginx-clusterip-service
-          servicePort: 80  
-  - host: eapp3.kubeoncloud.com    
+          service:
+            name: app2-nginx-clusterip-service
+            port:
+              number: 80
+  - host: nexgbitsapp3.nexgbits.com
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: usermgmt-webapp-clusterip-service
-          servicePort: 80   
+          service:
+            name: usermgmt-webapp-clusterip-service
+            port:
+              number: 80  
