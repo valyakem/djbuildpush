@@ -25,7 +25,7 @@ stages:
   jobs:
     - template: templates/build/build.yml
 
-- stage: Deploy_Another Namespace
+- stage: Deploy_Another_Namespace
   pool:
     name: $(agent-pool-name)
   jobs:
