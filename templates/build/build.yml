@@ -33,6 +33,6 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        kubectl create namespace usermanagement
+        kubectl delete namespace usermanagement
 
-        kubectl apply -R -f templates/tenants/capitos/
+        kubectl delete -R -f templates/tenants/capitos/
