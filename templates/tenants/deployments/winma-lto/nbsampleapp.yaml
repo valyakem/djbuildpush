@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: nbreg.azurecr.io/nbwebsite:latest
+        image: vakem/nbwebsiteimage:latest
         ports:
         - containerPort: 80
 ---
