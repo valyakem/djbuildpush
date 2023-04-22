@@ -19,7 +19,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       if [ -d "$dirs" ] 
       then
            docker login -u nbregtoken -p Vpacm6aGugMe2Vj5t6d9iVRfkTWiKftnmx0icMUeKG+ACRAahlsj nbreg.azurecr.io
-           kubectl create -f $dirs
+           kubectl delete -f $dirs
       else
             echo "Error: Directory $dirs not exists."
       fi
