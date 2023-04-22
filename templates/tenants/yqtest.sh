@@ -18,8 +18,8 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-           TOKEN=$(az acr login --name nbreg --expose-token --output tsv --query accessToken)
-           docker login nbreg.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN
+           az login --identity
+           az acr login --name nbreg
 
            kubectl delete -f $dirs
       else
