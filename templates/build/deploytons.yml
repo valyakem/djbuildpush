@@ -14,5 +14,4 @@ jobs:
       inlineScript: |
          az login --identity
          az acr login --name nbreg
-
         kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
