@@ -12,8 +12,8 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az acr login --name nbreg
-        kubectl create -R -f templates/tenants/capitos/ -n usermanagement
+        docker login -u nbregtoken -p Vpacm6aGugMe2Vj5t6d9iVRfkTWiKftnmx0icMUeKG+ACRAahlsj nbreg.azurecr.io
+        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
 
 
 
