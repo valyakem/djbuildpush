@@ -18,8 +18,10 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-           az acr login --name nbreg
-           kubectl create -f $dirs
+           TOKEN=$(az acr login --name nbreg --expose-token --output tsv --query accessToken)
+           docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN
+           
+           kubectl delete -f $dirs
       else
             echo "Error: Directory $dirs not exists."
       fi

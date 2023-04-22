@@ -12,8 +12,10 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az acr login --name nbreg
-        kubectl create -R -f templates/tenants/capitos/ -n usermanagement
+        TOKEN=$(az acr login --name nbreg --expose-token --output tsv --query accessToken)
+        docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN
+        
+        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
 
 
 
