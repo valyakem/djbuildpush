@@ -16,7 +16,7 @@ spec:
     spec: 
       containers:
         - name: mysql
-          image: nbreg.azurecr.io/mysql:8.0
+          image: vakem/mysql:8.0
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom: 

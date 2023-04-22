@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: app2-nginx
-          image: nbreg.azurecr.io/nbwebsite:latest
+          image: vakem/nbwebsiteimage:latest
           ports:
             - containerPort: 80

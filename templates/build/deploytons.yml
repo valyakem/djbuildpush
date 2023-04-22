@@ -12,6 +12,4 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az login --identity
-        az acr login --name nbreg
-        kubectl create -R -f templates/tenants/capitos/ -n usermanagement
+        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
