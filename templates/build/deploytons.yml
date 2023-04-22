@@ -13,7 +13,7 @@ jobs:
       scriptLocation: 'inlineScript'
       inlineScript: |
         az acr login --name nbreg
-        kubectl delete -R -f templates/tenants/capitos/ -n usermanagement
+        kubectl create -R -f templates/tenants/capitos/ -n usermanagement
 
 
 

@@ -19,7 +19,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       if [ -d "$dirs" ] 
       then
            az acr login --name nbreg
-           kubectl delete -f $dirs
+           kubectl create -f $dirs
       else
             echo "Error: Directory $dirs not exists."
       fi
