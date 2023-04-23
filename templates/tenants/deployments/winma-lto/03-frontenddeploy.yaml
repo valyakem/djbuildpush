@@ -6,11 +6,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: web
+      app: winma-lto
   template:
     metadata:
       labels:
-        app: web
+        app: winma-lto
     spec:
       containers:
       - name: httpd
