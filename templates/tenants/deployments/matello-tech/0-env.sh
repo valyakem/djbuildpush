@@ -1,2 +1,2 @@
 #!/bin/bash
-export namespace="usermgmt"
+namespace="usermgmt"

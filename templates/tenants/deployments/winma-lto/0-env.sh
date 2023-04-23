@@ -1,2 +1,2 @@
 #!/bin/bash
-export namespace='web'
+namespace='web'
