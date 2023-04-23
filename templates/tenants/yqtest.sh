@@ -18,8 +18,8 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-           kubectl create namespace web
-           kubectl create -f $dirs -n web
+           kubectl delete namespace web
+           kubectl delete -f $dirs -n web
 #           kubectl delete namespace web
       else
             echo "Error: Directory $dirs not exists."
