@@ -1,0 +1,20 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server1
+  namespace: web1
+spec:
+  selector:
+    matchLabels:
+      app: web1
+  template:
+    metadata:
+      labels:
+        app: web1
+    spec:
+      containers:
+      - name: httpd
+        image: vakem/nbwebsiteimage:latest
+        ports:
+        - containerPort: 8080
