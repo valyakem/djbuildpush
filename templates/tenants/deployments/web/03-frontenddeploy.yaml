@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server
-  namespace: winma-lta
+  namespace: web
 spec:
   selector:
     matchLabels:
-      app: winma-lto
+      app: web
   template:
     metadata:
       labels:
-        app: winma-lto
+        app: web
     spec:
       containers:
       - name: httpd
