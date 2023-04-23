@@ -5,9 +5,9 @@ metadata:
   labels: 
     app: usermgmt-webapp
 spec: 
-  type: ClusterIP
+  type: LoadBalancer
   selector: 
     app: usermgmt-webapp
   ports: 
-    - port: 80000
+    - port: 80
       targetPort: 8000
