@@ -5,10 +5,10 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       tenantname=$(echo $im | jq -r '.tenantname' -)
       deploymentgroup=$(echo $im | jq -r '.deploymentgroup' -)
       export custname=$name 
-      export custsize=$size 
-      export custenvironment=$environment
-      export custtenant=$tenantname
-      export custdeployment=$deploymentgroup
+      # export custsize=$size 
+      # export custenvironment=$environment
+      # export custtenant=$tenantname
+      # export custdeployment=$deploymentgroup
       # echo $custname
       # yq '.metadata.name = $custname' templates/tenants/deployments/nbsampleapp.yaml > templates/tenants/deployments/test.yaml
       #=======
@@ -18,7 +18,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-           cat $dir/0-env.sh
+           cat $dirs/0-env.sh
            kubectl create -f $dirs -n $namespace
 #           kubectl delete namespace web
       else
