@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: nexgbitsapp1.nexgbits.com
+  - host: nexgbitsapp.nexgbits.com
     http:
       paths:
       - path: /
@@ -16,7 +16,7 @@ spec:
             name: app1-nginx-clusterip-service
             port:
               number: 80
-  - host: nexgbitsapp2.nexgbits.com
+  - host: nexgbitsapp.nexgbits.com
     http:
       paths:
       - path: /web1
@@ -25,14 +25,14 @@ spec:
           service:
             name: app2-nginx-clusterip-service
             port:
-              number: 80
-  - host: nexgbitsapp3.nexgbits.com
+              number: 8000
+  - host: nexgbitsapp.nexgbits.com
     http:
       paths:
-      - path: /
+      - path: /web2
         pathType: Prefix
         backend:
           service:
             name: usermgmt-webapp-clusterip-service
             port:
-              number: 80  
+              number: 8080
