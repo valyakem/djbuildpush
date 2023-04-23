@@ -12,5 +12,5 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-         k get namespaces
+         kubectl get namespaces
 #        kubectl apply -R -f templates/tenants/capitos/ -n usermanagement
