@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: web-server-ingress1
-  namespace: web1
+  name: web-server-ingress
+  namespace: web
 spec:
   ingressClassName: nginx
   rules:
   - host: nexgbitsapp.nexgbits.com
     http:
       paths:
-      - path: /web1
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: web-server-service1
+            name: web-server-service
             port:
-              number: 5001
+              number: 8000
