@@ -33,4 +33,5 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        kubectl delete namespace usermanagement
+         k get namespaces
+#        kubectl delete namespace usermanagement
