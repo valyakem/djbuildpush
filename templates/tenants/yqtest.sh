@@ -18,7 +18,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-           kubectl apply -f $dirs -n web
+           kubectl create -f $dirs -n web
       else
             echo "Error: Directory $dirs not exists."
       fi
