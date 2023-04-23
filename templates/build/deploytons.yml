@@ -13,5 +13,5 @@ jobs:
       scriptLocation: 'inlineScript'
       inlineScript: |
          kubectl get namespaces
-         kubectl create namespace web
+         kubectl delete namespace web
 #        kubectl apply -R -f templates/tenants/capitos/ -n usermanagement
