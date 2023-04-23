@@ -11,7 +11,7 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-          echo "Got it"
+          "working"
 
    #creation of client's secret in kubernetes
   - task: AzureCLI@2
