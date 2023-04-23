@@ -22,7 +22,7 @@ deployments:
   deploymentgroup: "amer/apac"
 
 - customer:
-  name: "winma-lto"
+  name: "web"
   size: "small"
   environment: "prod-east-aus"
   tenantname: "vdxdemo"
