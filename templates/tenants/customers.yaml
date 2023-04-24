@@ -20,16 +20,17 @@ deployments:
   environment: "prod-west-us"
   tenantname: "vdxdemo"
   deploymentgroup: "amer/apac"
-# - customer:
-#   name: "web"
-#   size: "small"
-#   environment: "prod-east-aus"
-#   tenantname: "vdxdemo"
-#   deploymentgroup: "amer/apac"
+  
+- customer:
+  name: "web"
+  size: "small"
+  environment: "prod-east-aus"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer/apac"
 
-# - customer:
-#   name: "web2"
-#   size: "small"
-#   environment: "prod-east-aus"
-#   tenantname: "vdxdemo"
-#   deploymentgroup: "amer/apac"
+- customer:
+  name: "web2"
+  size: "small"
+  environment: "prod-east-aus"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer/apac"
