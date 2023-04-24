@@ -18,14 +18,14 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-#           kubectl create namespace $name
-           kubectl delete -f $dirs -n $name
+           kubectl create namespace $name
+           kubectl create -f $dirs -n $name
             if [ "$name" = "matello-tech" ]; then
                   echo "creating secrets"
                   # kubectl create secret generic nbapp-secret --from-env-file=$dirs"/.envfile" -n $name
                   # echo "Done with secrets creation"
             fi
-           kubectl delete namespace $name
+#           kubectl delete namespace $name
       else
             echo "Error: Directory $dirs not exists."
       fi
@@ -33,6 +33,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       # echo $deploymentdir
 done
 
+kubectl create -f "templates/tenants/deployments/nginx-cpr.yaml"
             # if [ "$name" = "matello-tech" ]; then
             #       kubectl create secret generic nbapp-secret --from-env-file=$dirs"/.env" -n $name
             # fi
