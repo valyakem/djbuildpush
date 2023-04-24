@@ -6,4 +6,4 @@ SQL_PORT=3306
 SQL_DATABASE=nexgbits                      # name of the database
 SQL_ROOT_PASSWORD=+Laravan2010
 SQL_ROOT_USER=valyakem                        # do not use 'root'
-SQL_HOST=172.174.95.39
+SQL_HOST=20.232.176.3
