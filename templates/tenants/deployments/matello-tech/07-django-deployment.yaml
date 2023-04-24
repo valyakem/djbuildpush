@@ -18,8 +18,7 @@ spec:
         - name: nbweb
           image: vakem/nbwebapp:v1.0
           imagePullPolicy: Always
-          command: ['/bin/sh']           #<-- Add Command to run at start-up
-          args: ['-c','python manage.py makemigrations; python manage.py migrate']
+          command: ['sh', '-c', 'python manage.py makemigrations; python manage.py migrate']           #<-- Add Command to run at start-up
           ports: 
             - containerPort: 8000
           env:
