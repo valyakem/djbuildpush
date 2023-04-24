@@ -4,5 +4,5 @@ metadata:
   name: nbappconfig
 data:
   DJANGO_ALLOWED_HOSTS: "*"
-  STATIC_ENDPOINT_URL: "http://nbapps1.nexgbits.com/"
+  STATIC_ENDPOINT_URL: "http://nbapps1.nexgbits.com/web"
   DJANGO_LOGLEVEL: "info"
