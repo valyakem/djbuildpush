@@ -19,7 +19,7 @@ spec:
           image: vakem/nbwebapp:v1.0
           imagePullPolicy: Always
           command: ['/bin/sh']           #<-- Add Command to run at start-up
-          args: ['--env-file .env -c','python manage.py makemigrations; python manage.py migrate; python manage.py runserver 0.0.0.0:8000']
+          args: ['-c','python manage.py makemigrations; python manage.py migrate; python manage.py runserver 0.0.0.0:8000']
           ports: 
             - containerPort: 8000          
           env:
