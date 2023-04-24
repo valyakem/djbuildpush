@@ -1,40 +1,82 @@
-
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment 
 metadata:
   name: nbweb
+  labels:
+    app: nbweb
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: nbweb
-  template:
+  template:  
     metadata:
-      labels:
+      labels: 
         app: nbweb
-    spec:
+    spec:    
       containers:
-      - name: nbweb
-        image: vakem/nbwebapp:v1.0
-        ports:
-        - containerPort: 8000
-        env:
-        - name: DEBUG
-          value: "1"
-        - name: SECRET_KEY
-          value: generate-key-here_CHANGE-THIS
-        - name: SQL_ENGINE
-          value: "django.db.backends.mysql"
-        - name: SQL_PORT
-          value: "3306"
-        - name: SQL_HOST
-          value: "20.232.176.3"
-        - name: SQL_ROOT_USER
-          value: "root"
-        - name: SQL_ROOT_PASSWORD
-          value: "+Laravan2010"
-        - name: DATABASE
-          value: "nexgbits"
+        - name: nbweb
+          image: vakem/nbwebapp:v1.0
+          imagePullPolicy: Always
+          command: ['/bin/sh']           #<-- Add Command to run at start-up
+          args: ['-c','python manage.py makemigrations; python manage.py migrate']
+          ports: 
+            - containerPort: 8000
+          env:
+          - name: DEBUG
+            value: "1"
+          - name: SECRET_KEY
+            value: generate-key-here_CHANGE-THIS
+          - name: SQL_ENGINE
+            value: "django.db.backends.mysql"
+          - name: SQL_PORT
+            value: "3306"
+          - name: SQL_HOST
+            value: "20.232.176.3"
+          - name: SQL_ROOT_USER
+            value: "root"
+          - name: SQL_ROOT_PASSWORD
+            value: "+Laravan2010"
+          - name: DATABASE
+            value: "nexgbits"
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nbweb
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: nbweb
+#   template:
+#     metadata:
+#       labels:
+#         app: nbweb
+#     spec:
+#       containers:
+#       - name: nbweb
+#         image: vakem/nbwebapp:v1.0
+#         ports:
+#         - containerPort: 8000
+#         env:
+#         - name: DEBUG
+#           value: "1"
+#         - name: SECRET_KEY
+#           value: generate-key-here_CHANGE-THIS
+#         - name: SQL_ENGINE
+#           value: "django.db.backends.mysql"
+#         - name: SQL_PORT
+#           value: "3306"
+#         - name: SQL_HOST
+#           value: "20.232.176.3"
+#         - name: SQL_ROOT_USER
+#           value: "root"
+#         - name: SQL_ROOT_PASSWORD
+#           value: "+Laravan2010"
+#         - name: DATABASE
+#           value: "nexgbits"
 # DEBUG=1
 # SECRET_KEY=generate-key-here_CHANGE-THIS
 # DATABASE=nexgbits
@@ -44,30 +86,7 @@ spec:
 # SQL_ROOT_PASSWORD=+Laravan2010
 # SQL_ROOT_USER=valyakem                        # do not use 'root'
 # SQL_HOST=20.232.176.3
-# apiVersion: apps/v1
-# kind: Deployment 
-# metadata:
-#   name: nbweb
-#   labels:
-#     app: nbweb
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: nbweb
-#   template:  
-#     metadata:
-#       labels: 
-#         app: nbweb
-#     spec:    
-#       containers:
-#         - name: nbweb
-#           image: vakem/nbwebapp:v1.0
-#           imagePullPolicy: Always
-#           command: ['/bin/sh']           #<-- Add Command to run at start-up
-#           args: ['-c','python manage.py makemigrations; python manage.py migrate']
-#           ports: 
-#             - containerPort: 8000
+
 
 # apiVersion: apps/v1
 # kind: Deployment
