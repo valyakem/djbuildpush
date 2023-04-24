@@ -1,51 +1,51 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment 
 metadata:
   name: nbweb
   labels:
     app: nbweb
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: nbweb
-  template:
+  template:  
     metadata:
-      labels:
+      labels: 
         app: nbweb
-    spec:
+    spec:    
       containers:
-        - image: vakem/nbwebapp:v1.0
-          name: nbweb
-          envFrom:
-          - secretRef:
-              name: nbapp-secret
-          - configMapRef:
-              name: nbappconfig
-          ports:
+        - name: nbweb
+          image: vakem/nbwebapp:v1.0
+          imagePullPolicy: Always
+          command: ['/bin/sh']           #<-- Add Command to run at start-up
+          args: ['-c','python manage.py makemigrations; python manage.py migrate; python manage.py runserver 0.0.0.0:8000']
+          ports: 
             - containerPort: 8000
-              name: python
 
 # apiVersion: apps/v1
-# kind: Deployment 
+# kind: Deployment
 # metadata:
 #   name: nbweb
 #   labels:
 #     app: nbweb
 # spec:
-#   replicas: 1
 #   selector:
 #     matchLabels:
 #       app: nbweb
-#   template:  
+#   template:
 #     metadata:
-#       labels: 
+#       labels:
 #         app: nbweb
-#     spec:    
+#     spec:
 #       containers:
-#         - name: nbweb
-#           image: vakem/nbwebapp:v1.0
-#           imagePullPolicy: Always
-#           command: ['/bin/sh']           #<-- Add Command to run at start-up
-#           args: ['-c','python manage.py makemigrations; python manage.py migrate; python manage.py runserver 0.0.0.0:8000']
-#           ports: 
-#             - containerPort: 8000 
+#         - image: vakem/nbwebapp:v1.0
+#           name: nbweb
+#           envFrom:
+#           - secretRef:
+#               name: nbapp-secret
+#           - configMapRef:
+#               name: nbappconfig
+#           ports:
+#             - containerPort: 8000
+#               name: python 
