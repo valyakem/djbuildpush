@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: nexgbitsapp.nexgbits.com
+  - host: nbapps1.nexgbits.com
     http:
       paths:
       - path: /
