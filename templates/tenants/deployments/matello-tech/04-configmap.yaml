@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nbappconfig
-data: 
-  mysql_usermgmt.sql: |-
-    DROP DATABASE IF EXISTS nexgbits;
-    CREATE DATABASE nexgbits;
+data:
+  DJANGO_ALLOWED_HOSTS: "*"
+  STATIC_ENDPOINT_URL: "http://nbapps1.nexgbits.com/"
+  DJANGO_LOGLEVEL: "info"
