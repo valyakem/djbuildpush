@@ -14,12 +14,12 @@
 # elasticSearchVersion: "2.0.1"
 
 deployments:
-# - customer: 
-#   name: "matello-tech"
-#   size: "large"
-#   environment: "prod-west-us"
-#   tenantname: "vdxdemo"
-#   deploymentgroup: "amer/apac"
+- customer: 
+  name: "matello-tech"
+  size: "large"
+  environment: "prod-west-us"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer/apac"
 
 - customer:
   name: "web"

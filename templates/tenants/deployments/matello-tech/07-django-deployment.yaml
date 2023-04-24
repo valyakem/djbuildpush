@@ -1,36 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
-  name: usermgmt-webapp
+  name: nbweb
   labels:
-    app: usermgmt-webapp
+    app: nbweb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: usermgmt-webapp
+      app: nbweb
   template:  
     metadata:
       labels: 
-        app: usermgmt-webapp
+        app: nbweb
     spec:    
       containers:
-        - name: usermgmt-webapp
-          image: vakem/nbwebsiteimage:latest
+        - name: nbweb
+          image: vakem/nbwebapp:v1.0
           imagePullPolicy: Always
           command: ['/bin/bash']           #<-- Add Command to run at start-up
-          args: ['-c','python manage.py migrate; python manage.py runserver 0.0.0.0:8000']
+          args: ['-c','python manage.py makemigrations; python manage.py migrate; python manage.py runserver 0.0.0.0:8000']
           ports: 
             - containerPort: 8000          
           env:
             - name: DB_HOSTNAME
-              value: "mysql"            
+              value: "20.232.176.3"            
             - name: DB_PORT
-              value: "3306"            
+              value: "3306" 
+            - name: ENGINE
+              value: "jango.db.backends.myql"           
             - name: DB_NAME
-              value: "webappdb"            
+              value: "nexgbits"            
             - name: DB_USERNAME
-              value: "root"            
+              value: "valyakem"            
             - name: DB_PASSWORD
               valueFrom: 
                 secretKeyRef:

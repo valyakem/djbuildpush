@@ -5,8 +5,8 @@ metadata:
   namespace: matello-tech
 spec:
   selector:
-    app: web
+    app: nbweb
   ports:
     - protocol: TCP
-      port: 5000
+      port: 8000
       targetPort: 80
