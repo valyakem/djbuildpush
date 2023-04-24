@@ -18,12 +18,12 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       
       if [ -d "$dirs" ] 
       then
-           kubectl create namespace $name
+#           kubectl create namespace $name
            kubectl apply -f $dirs -n $name
             if [ "$name" = "matello-tech" ]; then
                   echo "creating secrets"
-                  kubectl create secret generic nbapp-secret --from-env-file=$dirs"/.envfile" -n $name
-                  echo "Done with secrets creation"
+                  # kubectl create secret generic nbapp-secret --from-env-file=$dirs"/.envfile" -n $name
+                  # echo "Done with secrets creation"
             fi
 #           kubectl delete namespace $name
       else

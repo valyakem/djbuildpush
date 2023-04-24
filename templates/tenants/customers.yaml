@@ -27,3 +27,10 @@ deployments:
   environment: "prod-east-aus"
   tenantname: "vdxdemo"
   deploymentgroup: "amer/apac"
+
+- customer:
+  name: "web2"
+  size: "small"
+  environment: "prod-east-aus"
+  tenantname: "vdxdemo"
+  deploymentgroup: "amer/apac"
