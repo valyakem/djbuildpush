@@ -24,7 +24,7 @@ spec:
             - containerPort: 8000          
           env:
             - name: DEBUG
-              value: 1
+              value: "1"
             - name: SQL_ENGINE
               value: "jango.db.backends.myql"
             - name: SECRET_KEY
