@@ -9,7 +9,7 @@ spec:
   - host: nexgbitsapp.nexgbits.com
     http:
       paths:
-      - path: /web
+      - path: /
         pathType: Prefix
         backend:
           service:
