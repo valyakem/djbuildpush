@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-server-service2
+  name: websvr-service2
   namespace: web2
 spec:
   selector:
     app: web2
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 80
+      port: 80
+      targetPort: 5001

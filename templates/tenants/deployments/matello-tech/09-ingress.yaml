@@ -1,18 +1,18 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: web-server-ingress1
-  namespace: matello-tech
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: nbapp1.nexgbits.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: web-server-service1
-            port:
-              number: 8000
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: web-server-ingress1
+#   namespace: matello-tech
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: nbapp1.nexgbits.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: web-server-service1
+#             port:
+#               number: 8000

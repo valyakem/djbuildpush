@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-server-service1
-  namespace: matello-tech
+  name: nbapp-service
+  labels: 
+    app: nbapp
 spec:
+  type: ClusterIP
   selector:
-    app: nbweb
-  ports:
-    - protocol: TCP
-      port: 8000
-      targetPort: 80
+    app: nbapp
+  ports: 
+    - port: 80
+      targetPort: 8000
