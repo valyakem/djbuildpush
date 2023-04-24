@@ -23,17 +23,21 @@ spec:
           ports: 
             - containerPort: 8000          
           env:
-            - name: DB_HOSTNAME
+            - name: DEBUG
+              value: 1
+            - name: SQL_ENGINE
+              value: "jango.db.backends.myql"
+            - name: SECRET_KEY
+              value: "ksdlfkslkfkskdj sdlfjskdfkj lsfjkaskf ljks"
+            - name: SQL_HOST
               value: "20.232.176.3"            
-            - name: DB_PORT
-              value: "3306" 
-            - name: ENGINE
-              value: "jango.db.backends.myql"           
-            - name: DB_NAME
+            - name: SQL_PORT
+              value: "3306"           
+            - name: SQL_DATABASE
               value: "nexgbits"            
-            - name: DB_USERNAME
-              value: "valyakem"            
-            - name: DB_PASSWORD
+            - name: SQL_ROOT_USER
+              value: "root"            
+            - name: SQL_ROOT_PASSWORD
               valueFrom: 
                 secretKeyRef:
                   name: mysql-db-password
