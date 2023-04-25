@@ -15,7 +15,7 @@
 
 deployments:
 - customer: 
-  name: "nginxdeployment"
+  name: "conbaserouting"
   size: "large"
   environment: "prod-west-us"
   tenantname: "vdxdemo"
