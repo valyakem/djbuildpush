@@ -34,7 +34,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       # echo $deploymentdir
 done
 
-kubectl apply -f "templates/tenants/deployments/conbaserouting/"
+kubectl apply -R -f "templates/tenants/conbaserouting/"
             # if [ "$name" = "matello-tech" ]; then
             #       kubectl create secret generic nbapp-secret --from-env-file=$dirs"/.env" -n $name
             # fi
