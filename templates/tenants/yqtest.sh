@@ -34,7 +34,7 @@ for im in $(yq eval -o=j templates/tenants/customers.yaml | jq -cr '.deployments
       # echo $deploymentdir
 done
 
-kubectl delete -R -f "templates/tenants/conbaserouting/"
+kubectl delete -R -f "templates/tenants/deployments/web"
             # if [ "$name" = "matello-tech" ]; then
             #       kubectl create secret generic nbapp-secret --from-env-file=$dirs"/.env" -n $name
             # fi
