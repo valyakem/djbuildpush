@@ -14,7 +14,7 @@ variables:
   imageRepository: 'valyakemdjbuildpush'
   containerRegistry: 'nbacr01.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/docker-manifests/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'v1.0.0'
   agent-pool-name: 'nbakspools'
 
   # Agent VM image name
