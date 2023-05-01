@@ -40,8 +40,9 @@ stages:
           acrName="nbacr01"
           TOKEN=$(az acr login --name $acrName --expose-token --output tsv --query accessToken)
           docker login $acrServer --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN
+          tag="`echo 1.0.$(Rev:r)`"
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          1.0.$(Rev:r)     
+          $(tag)     
