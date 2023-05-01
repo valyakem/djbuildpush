@@ -14,7 +14,7 @@ variables:
   imageRepository: 'nbapp1/app1nginx'
   containerRegistry: 'nbacr01.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/docker-manifests/Dockerfile'
-  tag: "1.0."$(Rev:r)
+  tag: "1.0.$(Rev:r)"
   agent-pool-name: 'nbakspools'
 
   # Agent VM image name
