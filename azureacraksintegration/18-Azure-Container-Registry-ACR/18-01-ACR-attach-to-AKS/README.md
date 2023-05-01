@@ -113,7 +113,7 @@ docker push $ACR_REGISTRY/$ACR_NAMESPACE/$ACR_IMAGE_NAME:$ACR_IMAGE_TAG
 ## Step-05: Configure ACR integration for existing AKS clusters
 ```
 #Set ACR NAME
-export ACR_NAME=acrforaksdemo2
+export ACR_NAME=nbacr01
 echo $ACR_NAME
 
 # Template
