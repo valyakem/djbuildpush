@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: acrdemo-localdocker
-          image: nbacr01.azurecr.io/app2/acr-app2:v1
+          image: nbacr01.azurecr.io/nbapp:v1.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
