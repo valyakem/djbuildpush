@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '3fabab71-6343-41f5-b435-c8546b76f35a'
-  imageRepository: 'valyakemdjbuildpush'
+  imageRepository: 'nbapp'
   containerRegistry: 'nbacr01.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/docker-manifests/Dockerfile'
   tag: 'v1.0.1'
