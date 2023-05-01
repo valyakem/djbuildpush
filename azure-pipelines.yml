@@ -31,18 +31,20 @@ stages:
       name: $(agent-pool-name)
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
-      scriptType: 'bash'
-      scriptLocation: 'inlineScript'
-      inlineScript: |
-        acrServer="login nbacr01.azurecr.io"
-        acrName="nbacr01"
-        TOKEN=$(az acr login --name $acrName --expose-token --output tsv --query accessToken)
-        •	docker login $acrServer --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN
+      displayName: Build and push an image to container registr
       inputs:
         command: buildAndPush
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          acrServer="login nbacr01.azurecr.io"
+          acrName="nbacr01"
+          TOKEN=$(az acr login --name $acrName --expose-token --output tsv --query accessToken)
+          docker login $acrServer --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< $TOKEN
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+              scriptType: 'bash'
+        
