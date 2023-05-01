@@ -15,10 +15,11 @@ variables:
   containerRegistry: 'nbacr01.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/docker-manifests/Dockerfile'
   tag: '$(Build.BuildId)'
+  agent-pool-name: 'nbakspools'
 
   # Agent VM image name
 pool:
-  name: 'nbakspools' 
+  name: $(agent-pool-name) 
 
 stages:
 - stage: Build
