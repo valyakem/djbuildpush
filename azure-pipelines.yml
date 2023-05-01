@@ -3,7 +3,6 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- None
 
 resources:
 - repo: self
@@ -45,6 +44,4 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(tag)
-              scriptType: 'bash'
-        
+          $(tag)      
