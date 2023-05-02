@@ -14,12 +14,13 @@ stages:
   jobs:
     - job: JobA
       steps:
-       - task: Bash@3
+        - task: Bash@3
          name: Task_A
          inputs:
           targetType: inline
           script: echo 'Task A'
     - job: ValidateA
+      steps:
         - task: ManualValidation@0
           displayName: 'Manual Validation'
           inputs:
@@ -34,11 +35,11 @@ stages:
   jobs:
     - job: JobB
       steps:
-       - task: Bash@3 
-         name: Task_B
-         inputs:
-          targetType: inline
-          script: echo 'Task B'
+        - task: Bash@3 
+          name: Task_B
+          inputs:
+           targetType: inline
+           script: echo 'Task B'
 
 # # Docker
 # # Build and push an image to Azure Container Registry
