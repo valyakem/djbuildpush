@@ -34,7 +34,7 @@ stages:
           valentine.akem@hq.nexgbits.com
           valyakem@yahoo.co.uk
         instructions: 'Please validate the build configuration and resume'
-        onTimeout: 'resume'  'reject' | 'resume'. On timeout. Default: reject.
+        onTimeout: 'resume'  'reject' # | 'resume'. On timeout. Default: reject.
   - job: deploy
     dependsOn: waitForValidation
     pool:
