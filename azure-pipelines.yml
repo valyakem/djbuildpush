@@ -5,9 +5,8 @@ resources:
 - repo: self
 
 variables:
-  agent-pool-name: 'nbakspools'
+- agent-pool-name: 'nbakspools'
 - group: nbtest-vg
-  
 
 pool:
   name: $(agent-pool-name)
