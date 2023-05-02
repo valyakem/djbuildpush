@@ -4,11 +4,8 @@ pr: none
 resources:
 - repo: self
 
-variables:
-  agent-pool-name: 'nbakspools'
-
 pool:
-  name: $(agent-pool-name)
+  name: '$(agent-pool-name)'
 
 stages:
 - stage: Build
@@ -34,7 +31,7 @@ stages:
   - job: deploy
     dependsOn: approval
     pool:
-      agent-pool-name
+      name: '$(agent-pool-name)'
     steps:
     - bash: echo 'deploying'
       displayName: 'deploying' 
