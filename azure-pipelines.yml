@@ -53,7 +53,7 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           kubectl get namespaces
-          echo $(acr-sp-id)
+          echo $(group.acr-sp-id)
 
 
 
