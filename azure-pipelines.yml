@@ -5,7 +5,7 @@ resources:
 - repo: self
 
 variables:
-- group: nbtest-vg
+  group: nbtest-vg
   agent-pool-name: 'nbakspools'
 
 pool:
