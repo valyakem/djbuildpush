@@ -30,6 +30,7 @@ stages:
     - task: ManualValidation@0
       timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
+        azureSubscription: 'azureconnection'
         notifyUsers: |
           valentine.akem@hq.nexgbits.com
           valyakem@yahoo.co.uk
@@ -45,7 +46,7 @@ stages:
     - task: AzureCLI@2
       displayName: Install_customers_kubernetes_files
       inputs:
-        azureSubscription: '$(azure-subscription)'
+        azureSubscription: 'azureconnection'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
