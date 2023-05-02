@@ -22,6 +22,11 @@ stages:
         deploy:
           steps:
           - checkout: self
+          - task: ManualValidation@0
+            inputs:
+              notifyUsers: # string. Required. Notify users. 
+              #instructions: # string. Instructions. 
+              #onTimeout: 'reject' # 'reject' | 'resume'. On timeout. Default: reject
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
