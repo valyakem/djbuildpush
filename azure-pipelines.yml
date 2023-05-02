@@ -5,11 +5,14 @@ resources:
 - repo: self
 
 variables:
-- agent-pool-name: 'nbakspools'
-- group: nbtest-vg
+  agent-pool-name: 'nbakspools'
+- 
 
 pool:
   name: $(agent-pool-name)
+- group: nbtest-vg
+- name: spid
+  value: $[variables.acr-sp-id]
 
 stages:
 - stage: Build
