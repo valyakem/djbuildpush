@@ -30,6 +30,20 @@ stages:
     pool:
       name: $(agent-pool-name)
     steps:
+    - task: ManualValidation@0
+      displayName: 'Manual Validation'
+      inputs:
+        notifyUsers: |
+        valentine.akem@hq.nextgbits.com
+        valyakem@yahoo.co.uk
+        instructions: 'Please Approve this job for us to continue'
+      retryCountOnTaskFailure: 1
+    - task: ManualIntervention@8
+      displayName: 'Pause deployment until approved'
+      inputs:
+        instructions: 'This deployment is paused waiting for your approvals'
+        emailRecipients: '["fef505e6-ade1-68a0-a04d-3abe34ae9bb0"]'
+      retryCountOnTaskFailure: 1
     - task: Docker@2
       displayName: Build and push an image to container registr
       inputs:
