@@ -42,6 +42,7 @@ stages:
     dependsOn: waitForValidation
     pool:
       name: $(agent-pool-name)
+    environment: dev
     steps:
     - bash: echo 'deploying'
       displayName: 'deploying' 
