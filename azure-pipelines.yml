@@ -5,20 +5,20 @@ resources:
 - repo: self
 
 variables:
-  #agent-pool-name: 'nbakspools'
-- group: nbtest-vg
-- name: spid
-  value: $[variables.acr-sp-id]
+- name: agent-pool-name
+  value: 'nbakspools'
+- name: group
+  value: nbtest-vg
 
 pool:
-  name: 'nbakspools'
+  name: $(agent-pool-name)
 
 stages:
 - stage: Build
   jobs:
   - job: AppBuild
     pool:
-      name: 'nbakspools'   #$(agent-pool-name)
+      name: $(agent-pool-name)
     steps:
     - bash: echo 'building'
       displayName: 'building'
@@ -41,7 +41,7 @@ stages:
   - job: deploy
     dependsOn: waitForValidation
     pool:
-      name: 'nbakspools'#$(agent-pool-name)
+      name: $(agent-pool-name)
     steps:
     - bash: echo 'deploying'
       displayName: 'deploying' 
