@@ -1,39 +1,36 @@
-trigger:
-- none
+trigger: none
+pr: none
+
+resources:
+- repo: self
+
 
 variables:
+  #defaultpath: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/'
   agent-pool-name: 'nbakspools'
-  tagNumber: '1.0'
 
-  # Agent VM image name
+
 pool:
   name: $(agent-pool-name) 
 
-stages:
-- stage: StageA 
-  jobs:
-  - deployment:
-    displayName: Deploy to AKS
-    pool:
-      name: $(agent-pool-name)
-    environment: dev
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - checkout: self
-          - task: ManualValidation@0
-            inputs:
-              notifyUsers: # string. Required. Notify users. 
-              #instructions: # string. Instructions. 
-              #onTimeout: 'reject' # 'reject' | 'resume'. On timeout. Default: reject
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              kubernetesServiceConnection: serviceConnection #replace with your service connection
-              namespace: aksnamespace
-              manifests: manifests/*
+jobs:
+
+  - job: install_terraform
+    displayName: "Installing Terraform"
+    steps:
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+        displayName: 'Install Terraform latest'
+
+  - job: manual_approval
+    displayName: "Manual Approval"
+    dependsOn: install_terraform
+    steps:
+      - task: ManualValidation@0
+        timeoutInMinutes: 5
+        inputs:
+          instructions: "Hi, please validate"
+
+
 
 # # Docker
 # # Build and push an image to Azure Container Registry
