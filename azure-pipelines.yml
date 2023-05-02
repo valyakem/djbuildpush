@@ -14,18 +14,16 @@ pool:
   name: $(agent-pool-name) 
 
 jobs:
-
   - job: install_terraform
     displayName: "Installing Terraform"
     steps:
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
         displayName: 'Install Terraform latest'
-
   - job: manual_approval
     displayName: "Manual Approval"
     dependsOn: install_terraform
     steps:
-      - task: ManualValidation@0
+      - task: ManualValidation@8
         timeoutInMinutes: 5
         inputs:
           instructions: "Hi, please validate"
