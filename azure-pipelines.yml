@@ -42,12 +42,15 @@ stages:
     steps:
     - bash: echo 'deploying'
       displayName: 'deploying' 
-    - task: 
-      scriptType: 'bash'
-      scriptLocation: 'inlineScript'
-      inlineScript: |
-         kubectl get namespaces
-         echo $(acr-sp-id)
+    - task: AzureCLI@2
+      displayName: Install_customers_kubernetes_files
+      inputs:
+        azureSubscription: '$(azure-subscription)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          kubectl get namespaces
+          echo $(acr-sp-id)
 
 
 
