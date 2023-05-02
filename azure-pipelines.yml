@@ -10,51 +10,104 @@ variables:
 - name: group
   value: nbtest-vg
 
-pool:
-  name: $(agent-pool-name)
+jobs:
+- job: waitForValidation
+  displayName: Wait for external validation
+  pool: server
+  timeoutInMinutes: 4320 # job times out in 3 days
+  steps:
+  - task: ManualValidation@0
+    timeoutInMinutes: 1440 # task times out in 1 day
+    inputs:
+      azureSubscription: 'azureconnection'
+      notifyUsers: |
+        valentine.akem@hq.nexgbits.com
+        valyakem@yahoo.co.uk
+      instructions: 'Please validate the build configuration and resume'
+      onTimeout: 'resume' # | 'resume'. On timeout. Default: reject.
 
-stages:
-- stage: Build
-  jobs:
-  - job: AppBuild
-    pool:
-      name: $(agent-pool-name)
-    steps:
-    - bash: echo 'building'
-      displayName: 'building'
-- stage: Deploy
-  jobs:
-  - job: waitForValidation
-    displayName: Wait for external validation
-    pool: server
-    timeoutInMinutes: 4320 # job times out in 3 days
-    steps:
-    - task: ManualValidation@0
-      timeoutInMinutes: 1440 # task times out in 1 day
-      inputs:
-        azureSubscription: 'azureconnection'
-        notifyUsers: |
-          valentine.akem@hq.nexgbits.com
-          valyakem@yahoo.co.uk
-        instructions: 'Please validate the build configuration and resume'
-        onTimeout: 'resume' # | 'resume'. On timeout. Default: reject.
-  - job: deploytokubernetes
-      displayName: Deploy to AKS
-      pool:
-        name: $(agent-pool-name)
-      environment: dev
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-            - checkout: self
-            - task: KubernetesManifest@0
-              displayName: Deploy to Kubernetes cluster
-              inputs:
-                action: deploy
-                kubernetesServiceConnection: dev #replace with your service connection
-                namespace: dev
-                manifests: manifests/*
+- deployment:
+  displayName: Deploy to AKS
+  dependsOn: waitForValidation
+  pool:
+    name: $(agent-pool-name)
+  environment: dev
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - checkout: self
+        - task: KubernetesManifest@0
+          displayName: Deploy to Kubernetes cluster
+          inputs:
+            action: deploy
+            kubernetesServiceConnection: dev #replace with your service connection
+            namespace: dev
+            scriptType: 'bash'
+            scriptLocation: 'inlineScript'
+            inlineScript: |
+              kubectl get namespaces
+              echo $(group.acr-sp-id)
+
+
+
+# trigger: none
+# pr: none
+
+# resources:
+# - repo: self
+
+# variables:
+# - name: agent-pool-name
+#   value: 'nbakspools'
+# - name: group
+#   value: nbtest-vg
+
+# pool:
+#   name: $(agent-pool-name)
+
+# stages:
+# - stage: Build
+#   jobs:
+#   - job: AppBuild
+#     pool:
+#       name: $(agent-pool-name)
+#     steps:
+#     - bash: echo 'building'
+#       displayName: 'building'
+# - stage: Deploy
+#   jobs:
+#   - job: waitForValidation
+#     displayName: Wait for external validation
+#     pool: server
+#     timeoutInMinutes: 4320 # job times out in 3 days
+#     steps:
+#     - task: ManualValidation@0
+#       timeoutInMinutes: 1440 # task times out in 1 day
+#       inputs:
+#         azureSubscription: 'azureconnection'
+#         notifyUsers: |
+#           valentine.akem@hq.nexgbits.com
+#           valyakem@yahoo.co.uk
+#         instructions: 'Please validate the build configuration and resume'
+#         onTimeout: 'resume' # | 'resume'. On timeout. Default: reject.
+#   - job: deploytokubernetes
+#       displayName: Deploy to AKS
+#       pool:
+#         name: $(agent-pool-name)
+#       environment: dev
+#       strategy:
+#         runOnce:
+#           deploy:
+#             steps:
+#             - checkout: self
+#             - task: KubernetesManifest@0
+#               displayName: Deploy to Kubernetes cluster
+#               inputs:
+#                 action: deploy
+#                 kubernetesServiceConnection: dev #replace with your service connection
+#                 namespace: dev
+#                 manifests: manifests/*
     # dependsOn: waitForValidation
     # pool:
     #   name: $(agent-pool-name)
