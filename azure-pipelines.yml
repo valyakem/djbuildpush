@@ -4,6 +4,9 @@ pr: none
 resources:
 - repo: self
 
+variables:
+  agent-pool-name: 'nbakspools'
+
 pool:
   name: $(agent-pool-name)
 
