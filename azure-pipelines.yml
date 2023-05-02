@@ -2,8 +2,8 @@ trigger:
 - None
 
 variables:
-  agent-pool-name: 'nbakspools'
-  
+ agent-pool-name: 'nbakspools'
+
 stages:
 - stage: Build
   jobs:
@@ -20,7 +20,11 @@ stages:
     steps:
     - task: ManualIntervention@8
       inputs:
-        instructions: 'reject or resume'
+        notifyUsers: |
+         valentine.akem@hq.nextgbits.com
+         valyakem@yahoo.co.uk
+        instructions: 'Please Approve this job for us to continue'
+      retryCountOnTaskFailure: 1
   - job: deploy
     dependsOn: approval
     pool:
