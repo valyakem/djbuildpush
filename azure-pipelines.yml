@@ -28,9 +28,8 @@ stages:
              valyakem@yahoo.co.uk
             instructions: 'Please Approve this job for us to continue'
           retryCountOnTaskFailure: 1
-  
 - stage: StageB
-  dependsOn: ValidateA
+  dependsOn: StageA
   condition: succeeded() #failed(') #Always()
   jobs:
     - job: JobB
