@@ -7,6 +7,9 @@ resources:
 variables:
   agent-pool-name: 'nbakspools'
 
+pool:
+  name: $(agent-pool-name)
+
 stages:
 - stage: Build
   jobs:
