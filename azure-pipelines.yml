@@ -21,16 +21,19 @@ stages:
       displayName: 'building'
 - stage: Deploy
   jobs:
-  - job: approval
+  - job: waitForValidation
+    displayName: Wait for external validation
     pool: server
+    timeoutInMinutes: 4320 # job times out in 3 days
     steps:
-    - task: ManualIntervention@8
+    - task: ManualValidation@0
+      timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
         notifyUsers: |
-         valentine.akem@hq.nextgbits.com
-         valyakem@yahoo.co.uk
-        instructions: 'Please Approve this job for us to continue'
-      retryCountOnTaskFailure: 1
+          valentine.akem@hq.nexgbits.com
+          valyakem@yahoo.co.uk
+        instructions: 'Please validate the build configuration and resume'
+        onTimeout: 'resume'
   - job: deploy
     dependsOn: approval
     pool:
