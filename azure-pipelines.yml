@@ -23,7 +23,7 @@ jobs:
     displayName: "Manual Approval"
     dependsOn: install_terraform
     steps:
-      - task: ManualValidation@8
+      - task: ManualValidation@0
         timeoutInMinutes: 5
         inputs:
           instructions: "Hi, please validate"
