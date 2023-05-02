@@ -5,7 +5,7 @@ resources:
 - repo: self
 
 pool:
-  name: '$(agent-pool-name)'
+  name: $(agent-pool-name)
 
 stages:
 - stage: Build
@@ -31,7 +31,7 @@ stages:
   - job: deploy
     dependsOn: approval
     pool:
-      name: '$(agent-pool-name)'
+      name: $(agent-pool-name)
     steps:
     - bash: echo 'deploying'
       displayName: 'deploying' 
