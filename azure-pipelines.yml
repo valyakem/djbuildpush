@@ -38,8 +38,7 @@ stages:
           valyakem@yahoo.co.uk
         instructions: 'Please validate the build configuration and resume'
         onTimeout: 'resume' # | 'resume'. On timeout. Default: reject.
-  - job: deploy
-      deployment:
+  - job: deploytokubernetes
       displayName: Deploy to AKS
       pool:
         name: $(agent-pool-name)
