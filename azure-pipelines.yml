@@ -1,32 +1,32 @@
-trigger: none
-pr: none
-
-resources:
-- repo: self
-
+trigger:
+- None
 
 variables:
-  #defaultpath: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/'
-  agent-pool-name: 'nbakspools'
-
-
-pool:
-  name: $(agent-pool-name) 
-
-jobs:
-  - job: install_terraform
-    displayName: "Installing Terraform"
+  name: 'agent-pool-name'
+stages:
+- stage: Build
+  jobs:
+  - job: AppBuild
+    pool:
+      name: $(agent-pool-name)
     steps:
-      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-        displayName: 'Install Terraform latest'
-  - job: manual_approval
-    displayName: "Manual Approval"
-    dependsOn: install_terraform
+    - bash: echo 'building'
+      displayName: 'building'
+- stage: Deploy
+  jobs:
+  - job: approval
+    pool: server
     steps:
-      - task: ManualValidation@0
-        timeoutInMinutes: 5
-        inputs:
-          instructions: "Hi, please validate"
+    - task: ManualIntervention@8
+      inputs:
+        instructions: 'reject or resume'
+  - job: deploy
+    dependsOn: approval
+    pool:
+      agent-pool-name
+    steps:
+    - bash: echo 'deploying'
+      displayName: 'deploying' 
 
 
 
