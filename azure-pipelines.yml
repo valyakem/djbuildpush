@@ -15,10 +15,10 @@ stages:
     - job: JobA
       steps:
         - task: Bash@3
-         name: Task_A
-         inputs:
-          targetType: inline
-          script: echo 'Task A'
+          name: Task_A
+          inputs:
+           targetType: inline
+           script: echo 'Task A'
     - job: ValidateA
       steps:
         - task: ManualValidation@0
