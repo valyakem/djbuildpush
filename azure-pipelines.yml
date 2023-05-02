@@ -12,34 +12,23 @@ pool:
 stages:
 - stage: StageA 
   jobs:
-    - job: JobA
-      steps:
-        - task: Bash@3
-          name: Task_A
-          inputs:
-           targetType: inline
-           script: echo 'Task A'
-    - job: ValidateA
-      steps:
-        - task: ManualValidation@0
-          displayName: 'Manual Validation'
-          inputs:
-            notifyUsers: |
-             valentine.akem@hq.nextgbits.com
-             valyakem@yahoo.co.uk
-            instructions: 'Please Approve this job for us to continue'
-          retryCountOnTaskFailure: 1
-- stage: StageB
-  dependsOn: StageA
-  condition: succeeded() #failed(') #Always()
-  jobs:
-    - job: JobB
-      steps:
-        - task: Bash@3 
-          name: Task_B
-          inputs:
-           targetType: inline
-           script: echo 'Task B'
+  - deployment:
+    displayName: Deploy to AKS
+    pool:
+      name: $(agent-pool-name)
+    environment: dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes cluster
+            inputs:
+              action: deploy
+              kubernetesServiceConnection: serviceConnection #replace with your service connection
+              namespace: aksnamespace
+              manifests: manifests/*
 
 # # Docker
 # # Build and push an image to Azure Container Registry
