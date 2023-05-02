@@ -35,7 +35,6 @@ stages:
       inputs:
         notifyUsers: |
         valentine.akem@hq.nextgbits.com
-        valyakem@yahoo.co.uk
         instructions: 'Please Approve this job for us to continue'
       retryCountOnTaskFailure: 1
     - task: ManualIntervention@8
