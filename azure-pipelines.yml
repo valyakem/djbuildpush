@@ -35,7 +35,7 @@ stages:
         instructions: 'Please validate the build configuration and resume'
         onTimeout: 'resume'
   - job: deploy
-    dependsOn: approval
+    dependsOn: waitForValidation
     pool:
       name: $(agent-pool-name)
     steps:
