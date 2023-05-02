@@ -13,7 +13,7 @@ jobs:
   displayName: Deploy to GKE
   pool:
     name: $(agent-pool-name) 
-  environment: contoso.gkenamespace
+  environment: Dev
   strategy:
     runOnce:
       deploy:
