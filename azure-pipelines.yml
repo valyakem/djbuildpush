@@ -9,6 +9,14 @@ variables:
   value: 'nbakspools'
 - name: group
   value: nbtest-vg
+- name: dockerRegistryServiceConnection
+  value: '3fabab71-6343-41f5-b435-c8546b76f35a'
+- name: imageRepository
+  value: 'nbapp1/app1nginx'
+- name: containerRegistry
+  value: 'nbacr01.azurecr.io'
+- name: dockerfilePath
+  value: '$(Build.SourcesDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/docker-manifests/Dockerfile'
 
 jobs:
 - job: waitForValidation
