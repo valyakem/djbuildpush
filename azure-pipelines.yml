@@ -41,7 +41,7 @@ jobs:
           displayName: Deploy to Kubernetes cluster
           inputs:
             action: deploy
-            kubernetesServiceConnection: dev #replace with your service connection
+            kubernetesServiceConnection: aks-dev-con #replace with your service connection
             namespace: dev
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
