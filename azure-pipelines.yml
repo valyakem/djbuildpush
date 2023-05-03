@@ -41,13 +41,12 @@ jobs:
           displayName: Deploy to Kubernetes cluster
           inputs:
             action: deploy
-            kubernetesServiceConnection: aks-dev-conn #replace with your service connection
+            azureSubscription: 'azureconnection' #replace with your service connection
             namespace: dev
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
             inlineScript: |
               kubectl get namespaces
-              echo $(group.acr-sp-id)
 
 
 
