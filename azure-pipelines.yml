@@ -65,10 +65,9 @@ jobs:
             action: deploy
             kubernetesServiceConnection: 'Dev-dev-1683075764456' #replace with your service connection
             namespace: dev
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              echo "got it"
+            script: |
+              kubectl get namespace
+# manifests: $(System.DefaultWorkingDirectory)/azureacraksintegration/18-Azure-Container-Registry-ACR/18-01-ACR-attach-to-AKS/kube-manifests/*
 
 
 
