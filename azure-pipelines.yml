@@ -39,7 +39,7 @@ jobs:
   dependsOn: waitForValidation
   pool:
     name: $(agent-pool-name)
-  environment: dev
+  environment: Dev
   strategy:
     runOnce:
       deploy:
@@ -63,7 +63,7 @@ jobs:
           displayName: Deploy to Kubernetes cluster
           inputs:
             action: deploy
-            kubernetesServiceConnection: 'nbaksSvcConn' #replace with your service connection
+            kubernetesServiceConnection: 'Dev-dev-1683075135625' #replace with your service connection
             namespace: dev
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
