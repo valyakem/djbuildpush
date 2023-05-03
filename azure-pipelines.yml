@@ -41,7 +41,7 @@ jobs:
           displayName: Deploy to Kubernetes cluster
           inputs:
             action: deploy
-            azureSubscription: 'azureconnection' #replace with your service connection
+            kubernetesServiceConnection: nbaksSvcConn #replace with your service connection
             namespace: dev
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
