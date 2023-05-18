@@ -41,13 +41,13 @@ jobs:
    name: $(agent-pool-name)
   steps:
   - task: CopyFiles@2
-    displayName: 'Copy scripts'
+    displayName: 'Copy Manifest Files'
     inputs:
-      contents: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/'
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
+      contents: 'djbuildpush/templates/tenants/deployments/'
+      targetFolder: '$(Build.ArtifactStagingDirectory)/deployments/'
 
-  - publish: '$(Build.ArtifactStagingDirectory)/deployments'
-    displayName: 'Publish script'
+  - publish: '$(Build.ArtifactStagingDirectory)/deployments/'
+    displayName: 'Publish Manifests'
     artifact: drop
   # - task: ArchiveFiles@2
   #   inputs:
