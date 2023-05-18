@@ -34,9 +34,25 @@ jobs:
       instructions: 'Please validate the build configuration and resume'
       onTimeout: 'resume' # | 'resume'. On timeout. Default: reject.
 
+- job: Build
+  displayName: Build
+  dependsOn: waitForValidation
+  pool:
+   name: $(agent-pool-name)
+  steps:
+  - task: ArchiveFiles@2
+    inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/'
+    includeRootFolder: false
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
+
 - deployment:
   displayName: Deploy to AKS
-  dependsOn: waitForValidation
+  dependsOn: Build
   pool:
     name: $(agent-pool-name)
   environment: Dev
