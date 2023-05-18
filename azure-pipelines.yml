@@ -40,6 +40,13 @@ jobs:
   pool:
    name: $(agent-pool-name)
   steps:
+  - task: AzureCLI@2
+    displayName: Install_customers_kubernetes_files
+    inputs:
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        sudo apt -y install zip
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments'
