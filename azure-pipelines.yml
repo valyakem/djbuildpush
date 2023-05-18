@@ -42,8 +42,8 @@ jobs:
   steps:
   - task: ArchiveFiles@2
     inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/'
-    includeRootFolder: false
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/'
+      includeRootFolder: false
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
