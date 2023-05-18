@@ -42,13 +42,15 @@ jobs:
   steps:
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/'
-      includeRootFolder: false
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'drop'
-      publishLocation: 'Container'
 
 - deployment:
   displayName: Deploy to AKS
