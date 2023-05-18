@@ -43,7 +43,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy scripts'
     inputs:
-      contents: ''$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/''
+      contents: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/'
       targetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - publish: '$(Build.ArtifactStagingDirectory)/deployments'
