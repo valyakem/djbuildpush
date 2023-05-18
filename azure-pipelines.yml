@@ -42,9 +42,10 @@ jobs:
   steps:
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/*'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments'
       includeRootFolder: true
       archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/Depployments.zip'
       replaceExistingArchive: true
   - task: PublishBuildArtifacts@1
     inputs:
