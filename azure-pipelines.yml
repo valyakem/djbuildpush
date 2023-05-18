@@ -40,25 +40,16 @@ jobs:
   pool:
    name: $(agent-pool-name)
   steps:
-  - task: CopyFiles@2
-    displayName: 'Copy Manifest Files'
+  - task: ArchiveFiles@2
     inputs:
-      contents: 'djbuildpush/templates/tenants/deployments/'
-      targetFolder: '$(Build.ArtifactStagingDirectory)/deployments/'
-
-  - publish: '$(Build.ArtifactStagingDirectory)/deployments/'
-    displayName: 'Publish Manifests'
-    artifact: drop
-  # - task: ArchiveFiles@2
-  #   inputs:
-  #     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/'
-  #     includeRootFolder: true
-  #     archiveType: 'zip'
-  #     replaceExistingArchive: true
-  # - task: PublishBuildArtifacts@1
-  #   inputs:
-  #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  #     ArtifactName: 'drop'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/djbuildpush/templates/tenants/deployments/*'
+      includeRootFolder: true
+      archiveType: 'zip'
+      replaceExistingArchive: true
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
 
 - deployment:
   displayName: Deploy to AKS
